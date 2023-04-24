@@ -1,63 +1,48 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static custom_tags %}
 
 {% block title %}
 Магазин
 {% endblock title %}
 
 {% block content %}
+
+{% get_categories as categories %}
+{% get_brands as brands %}
 <div class="shop_sidebar_area">
 
     <!-- ##### Single Widget ##### -->
     <div class="widget catagory mb-50">
         <!-- Widget Title -->
-        <h6 class="widget-title mb-30">Catagories</h6>
+        <h6 class="widget-title mb-30">Categories</h6>
 
         <!--  Catagories  -->
         <div class="catagories-menu">
             <ul>
-                <li class="active"><a href="#">Chairs</a></li>
-                <li><a href="#">Beds</a></li>
-                <li><a href="#">Accesories</a></li>
-                <li><a href="#">Furniture</a></li>
-                <li><a href="#">Home Deco</a></li>
-                <li><a href="#">Dressings</a></li>
-                <li><a href="#">Tables</a></li>
+                {% for category in categories %}
+                <li class=""><a href="#">{{ category }}</a></li>
+                {% endfor %}
+
             </ul>
         </div>
     </div>
 
-    <!-- ##### Single Widget ##### -->
+    <form action="">
+            <!-- ##### Single Widget ##### -->
     <div class="widget brands mb-50">
         <!-- Widget Title -->
         <h6 class="widget-title mb-30">Brands</h6>
 
         <div class="widget-desc">
             <!-- Single Form Check -->
+            {% for brand in brands %}
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="amado">
                 <label class="form-check-label" for="amado">Amado</label>
             </div>
+            {% endfor %}
             <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="ikea">
-                <label class="form-check-label" for="ikea">Ikea</label>
-            </div>
-            <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="furniture">
-                <label class="form-check-label" for="furniture">Furniture Inc</label>
-            </div>
-            <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="factory">
-                <label class="form-check-label" for="factory">The factory</label>
-            </div>
-            <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="artdeco">
-                <label class="form-check-label" for="artdeco">Artdeco</label>
-            </div>
+
         </div>
     </div>
 
@@ -98,6 +83,8 @@
             </div>
         </div>
     </div>
+        <button class="btn amado-btn">Filter</button>
+    </form>
 </div>
 
 <div class="amado_product_area section-padding-100">
